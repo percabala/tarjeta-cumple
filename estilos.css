@@ -1,0 +1,231 @@
+/* ==========================================================================
+   🌻 CONFIGURACIÓN GENERAL Y PALETA DE COLORES (GIRASOL)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #FFFDE7; /* Fondo Crema Suave */
+    color: #3E2723;            /* Texto Marrón Semilla */
+    overflow: hidden;          /* Evita barras de scroll raras en las transiciones */
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ==========================================================================
+   🔄 MANEJO DE ESTADOS (PANTALLAS INTERACTIVAS)
+   ========================================================================== */
+.pantalla {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out;
+    padding: 20px;
+}
+
+.activa {
+    opacity: 1;
+    z-index: 10;
+    pointer-events: all;
+}
+
+.oculta {
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   🎬 CONTENEDORES DE ANIMACIONES LOTTIE & DOTLOTTIE
+   ========================================================================== */
+
+/* Animación de Confeti Constante (Fondo Completo) */
+.contenedor-lottie-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: -1;              /* Detrás de los elementos interactivos */
+    pointer-events: none;     /* Permite hacer clic a través de la animación */
+    object-fit: cover;
+}
+
+/* Animación de Flores opcionales de la Pantalla 3 */
+.contenedor-lottie-fondo-flores {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;              /* Un paso más atrás que el confeti */
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Elementos animados individuales (Pasteles, Básquet) */
+.contenedor-lottie-elemento {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* ==========================================================================
+   📩 COMPONENTES DE LA PANTALLA 1 (EL SOBRE)
+   ========================================================================== */
+.contenido-centro {
+    text-align: center;
+    max-width: 600px;
+    z-index: 5; /* Asegura que esté por encima del fondo */
+}
+
+.sobre-cerrado {
+    font-size: 80px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.sobre-cerrado:hover {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.flecha-abrir {
+    font-size: 24px;       /* Subió de 18px a 24px (Dos niveles más grande) */
+    color: #3E2723;
+    margin-top: 15px;
+    font-weight: bold;
+    animation: bounce 1.5s infinite;
+}
+
+/* --- AVISO DE AUDIO PANTALLA 1 --- */
+.aviso-audio {
+    font-size: 15px;        /* Subió de 12px a 15px (Mantiene la jerarquía siendo más chico que la flecha) */
+    color: #6D4C41;         
+    margin-top: 16px;       /* Un poquito más de separación por el nuevo tamaño */
+    font-weight: 500;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.7); 
+    padding: 8px 16px;      /* Un cojín un poco más amplio para que sople el texto */
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* ==========================================================================
+   💥 COMPONENTES DE LA PANTALLA 2 (LA BROMA)
+   ========================================================================== */
+.texto-broma {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #3E2723;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.boton-girasol {
+    background-color: #FFC107; /* Amarillo Girasol */
+    color: #3E2723;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.boton-girasol:hover {
+    background-color: #FFA000;
+    transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   📜 LAYOUT DE LA PANTALLA 3 (MENSAJE REAL)
+   ========================================================================== */
+.layout-dividido {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    gap: 40px;
+    align-items: center;
+    z-index: 5;
+}
+
+.columna-izquierda, .columna-derecha {
+    flex: 1;
+}
+
+.tarjeta-mensaje {
+    background: linear-gradient(135px, #FFFDF0 0%, #FFF9C4 100%); /* Degradado crema-girasol suave */
+    padding: 35px;
+    border-radius: 24px;
+    border: 2px solid #FFE082;
+    border-left: 10px solid #FFC107; /* Borde grueso amarillo girasol */
+    box-shadow: 0 15px 35px rgba(62, 39, 35, 0.15); /* Sombra suave marrón */
+    
+    /* 🎬 Animación de entrada para el mensaje */
+    animation: fadeInUp 1.2s ease-out forwards;
+    opacity: 0; /* Empieza invisible y la animación lo muestra */
+}
+
+.tarjeta-mensaje h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #3E2723;
+    font-family: 'Georgia', serif; /* Letra más elegante para el título */
+    border-bottom: 2px dashed #FFD54F;
+    padding-bottom: 10px;
+}
+
+.tarjeta-mensaje p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #4E342E;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: justify; /* Alineación perfecta de los lados */
+}
+
+/* ✨ Definición de la animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Viene un poco desde abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   🏃 ANIMACIONES DE APOYO & ADAPTACIÓN A CELULARES
+   ========================================================================== */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Ajustes elásticos para pantallas de celulares */
+@media (max-width: 768px) {
+    .layout-dividido {
+        flex-direction: column;
+        overflow-y: auto;
+        max-height: 90vh;
+    }
+    .texto-broma { 
+        font-size: 2rem; 
+    }
+    .contenedor-lottie-elemento {
+        width: 200px;
+        height: 200px;
+    }
+}
